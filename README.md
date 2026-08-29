@@ -35,25 +35,25 @@ Kaydedilen lead bilgileri Wix üzerinde oluşturulan yönetim panelinden görün
   git clone <repository-url>
   cd smartlead-ai
 
-2.Sanal ortam oluşturun:
+2. Sanal ortam oluşturun:
 
   python -m venv venv
 
-3.Sanal ortamı etkinleştirin:
+3. Sanal ortamı etkinleştirin:
 
   Windows:
     venv\Scripts\activate
 
-4.Gerekli kütüphaneleri yükleyin:
+4. Gerekli kütüphaneleri yükleyin:
 
   pip install -r requirements.txt
 
-5.Proje ana dizininde .env dosyası oluşturun ve gerekli ortam değişkenlerini ekleyin:
+5. Proje ana dizininde .env dosyası oluşturun ve gerekli ortam değişkenlerini ekleyin:
 
   GROQ_API_KEY=your_api_key
   BUSINESS_CONTEXT=your_business_context
 
-6.Uygulamayı çalıştırın:
+6. Uygulamayı çalıştırın:
   
   python run.py
 
