@@ -10,7 +10,7 @@ def create_app():
     app.config.from_object("config")
 
     CORS(app, origins=[
-        "https://hamizogluseymen.wixsite.com/my-site-6"
+        "https://hamizogluseymen.wixsite.com"
     ])
 
     with app.app_context():
