@@ -31,8 +31,7 @@ Kaydedilen lead bilgileri Wix üzerinde oluşturulan yönetim panelinden görün
 ## Kurulum ve Çalıştırma
 
 1. Projeyi bilgisayarınıza klonlayın:
-2. 
-   ```bash
+   
   git clone <repository-url>
   cd smartlead-ai
 
@@ -63,8 +62,7 @@ Kaydedilen lead bilgileri Wix üzerinde oluşturulan yönetim panelinden görün
    http://127.0.0.1:5000/health
 
    Aşağıdaki gibi bir yanıt alıyorsanız backend başarıyla çalışıyor demektir:
-
-   ```json
+   
   {
     "status": "ok"
   }
