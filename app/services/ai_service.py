@@ -23,6 +23,8 @@ class AIService():
                     headers=headers,
                     json=payload
             )
+            print("GROQ STATUS:", response.status_code)
+            print("GROQ RESPONSE:", response.text)
 
             response.raise_for_status()
             data = response.json()
