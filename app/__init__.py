@@ -9,14 +9,14 @@ def create_app():
     app.json.ensure_ascii = False
     app.config.from_object("config")
 
-    # CORS(app, origins=[
-    #     "https://hamizogluseymen.wixsite.com"
-    # ])
-    CORS(app, resources={
-    r"/api/*": {
-        "origins": "*"
-    }
-    })
+    CORS(app, origins=[
+         "https://hamizogluseymen.wixsite.com"
+    ])
+    # CORS(app, resources={
+    # r"/api/*": {
+    #     "origins": "*"
+    # }
+    # })
 
     with app.app_context():
         init_db(app)
