@@ -66,28 +66,23 @@ def leads_excel():
         sheet = workbook.active
         sheet.title = "Leadler"
 
-        # Başlıklar
         sheet.append([
             "ID",
             "İsim",
-            "Soyisim",
             "Telefon",
             "Mesaj",
             "Tarih"
         ])
 
-        # Database verilerini Excel'e ekle
         for lead in leadler:
             sheet.append([
                 lead["id"],
                 lead["isim"],
-                lead["soyisim"],
                 lead["telefon"],
                 lead["mesaj"],
                 lead["tarih"]
             ])
 
-        # Excel dosyasını RAM üzerinde oluştur
         excel_file = BytesIO()
         workbook.save(excel_file)
         excel_file.seek(0)
