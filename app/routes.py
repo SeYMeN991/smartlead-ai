@@ -1,6 +1,9 @@
 from flask import Blueprint, render_template, request, jsonify
 from app.services.ai_service import ai_service, AIServiceError
 from app.database import lead_ekle, tum_leadler
+from flask import send_file
+from openpyxl import Workbook
+from io import BytesIO
 
 web_bp = Blueprint("web", __name__)
 
@@ -52,3 +55,52 @@ def lead_cekme():
     lead_list = [dict(lead) for lead in leadler]
 
     return jsonify({"basari":True,"leadler":lead_list})
+
+@api_bp.route("/leads/excel", methods=["GET"])
+def leads_excel():
+
+    try:
+        leadler = tum_leadler()
+
+        workbook = Workbook()
+        sheet = workbook.active
+        sheet.title = "Leadler"
+
+        # Başlıklar
+        sheet.append([
+            "ID",
+            "İsim",
+            "Soyisim",
+            "Telefon",
+            "Mesaj",
+            "Tarih"
+        ])
+
+        # Database verilerini Excel'e ekle
+        for lead in leadler:
+            sheet.append([
+                lead["id"],
+                lead["isim"],
+                lead["soyisim"],
+                lead["telefon"],
+                lead["mesaj"],
+                lead["tarih"]
+            ])
+
+        # Excel dosyasını RAM üzerinde oluştur
+        excel_file = BytesIO()
+        workbook.save(excel_file)
+        excel_file.seek(0)
+
+        return send_file(
+            excel_file,
+            as_attachment=True,
+            download_name="loshito_leadler.xlsx",
+            mimetype="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+        )
+
+    except Exception as e:
+        return {
+            "basari": False,
+            "hata": str(e)
+        }, 500
